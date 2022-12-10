@@ -35,16 +35,17 @@
                                             1. Design
                                         </h2>
                                     </div>
-                                    <div class="section_form design_form">
-                                        <?php 
+                                    <div class="section_form design_form" id="design_form">
+                                        <?php
                                         require_once 'forms/design_form.php'
                                         ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <button class="next__ btn btn-primary">
+                                                    Next
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -58,21 +59,22 @@
                                             2. Pages
                                         </h2>
                                     </div>
-                                    <div class="section_form pages_form">
-                                    <?php 
+                                    <div class="section_form pages_form" id="pages_form">
+                                        <?php
                                         require_once 'forms/pages_form.php'
                                         ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="previous__ btn btn-secondary" >
-                                                Previous
-                                            </button>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <button class="next__ btn btn-primary">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button class="previous__ btn btn-secondary">
+                                                    Previous
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,21 +88,22 @@
                                             3. Content Development
                                         </h2>
                                     </div>
-                                    <div class="section_form content-development_form">
-                                    <?php 
+                                    <div class="section_form content-development_form" id="content-development_form">
+                                        <?php
                                         require_once 'forms/content_dev_form.php'
                                         ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="previous__ btn btn-secondary" >
-                                                Previous
-                                            </button>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <button class="next__ btn btn-primary">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button class="previous__ btn btn-secondary">
+                                                    Previous
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -114,21 +117,22 @@
                                             4. Programming
                                         </h2>
                                     </div>
-                                    <div class="section_form programming_form">
-                                    <?php 
+                                    <div class="section_form programming_form" id="programming_form">
+                                        <?php
                                         require_once 'forms/programming_form.php'
                                         ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="previous__ btn btn-secondary" >
-                                                Previous
-                                            </button>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <button class="next__ btn btn-primary">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button class="previous__ btn btn-secondary">
+                                                    Previous
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,24 +146,25 @@
                                             5. Sell Your Items
                                         </h2>
                                     </div>
-                                    <div class="section_form ecommerce_form">
-                                    <?php 
+                                    <div class="section_form ecommerce_form" id="ecommerce_form">
+                                        <?php
                                         require_once 'forms/ecommerce_form.php'
                                         ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <button class="next__ btn btn-primary">
+                                                    Next
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <button class="previous__ btn btn-secondary">
+                                                    Previous
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <button class="previous__ btn btn-secondary" >
-                                                Previous
-                                            </button>
-                                        </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -170,63 +175,66 @@
                                         <h2 class="entry_heading">
                                             6. Search Engine Optimization
                                         </h2>
-                                    </div>
-                                    <div class="section_form seo_form">
-                                    <?php 
-                                        require_once 'forms/seo_form.php'
-                                        ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Next
-                                            </button>
+
+                                        <div class="section_form seo_form" id="seo_form">
+                                            <?php
+                                            require_once 'forms/seo_form.php'
+                                            ?>
+
+                                            <div class="next_prev_button">
+                                                <div>
+                                                    <button class="next__ btn btn-primary">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button class="previous__ btn btn-secondary">
+                                                        Previous
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <button class="previous__ btn btn-secondary" >
-                                                Previous
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="quote" role="tabpanel" aria-labelledby="quote-tab">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section_heading">
-                                        <h2 class="entry_heading">
-                                            7. Get an Itemized Quote
-                                        </h2>
-                                    </div>
-                                    <div class="section_form quote_form">
-                                    <?php 
-                                        require_once 'forms/quote_form.php'
-                                        ?>
-                                    </div>
-                                    <div class="next_prev_button">
-                                        <div>
-                                            <button class=" btn btn-secondary" >
-                                                Previous
-                                            </button>
+                            <div class="tab-pane fade" id="quote" role="tabpanel" aria-labelledby="quote-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section_heading">
+                                            <h2 class="entry_heading">
+                                                7. Get an Itemized Quote
+                                            </h2>
                                         </div>
-                                        <div>
-                                            <button class="next__ btn btn-primary" >
-                                                Submit
-                                            </button>
+                                        <div class="section_form quote_form" id="quote_form">
+                                            <?php
+                                            require_once 'forms/quote_form.php'
+                                            ?>
+
+                                            <div class="next_prev_button">
+                                                <div>
+                                                    <button class="previous__ btn btn-secondary">
+                                                        Previous
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button class="next__ btn btn-primary">
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="calculator_box">
-                        calculator
+                    <div class="col-md-4">
+                        <div class="calculator_box">
+                            calculator
+                        </div>
                     </div>
                 </div>
-            </div>
 
         </form>
     </div>

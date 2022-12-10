@@ -14,15 +14,15 @@
                 <div class="form_field">
                     <p>How do you plan to add content to your website? </p>
                     <div>
-                        <input type="radio" name="est_pages" id="est_pages_radio1" class="form-check-input">
+                        <input type="radio" name="est_pages" id="est_pages_radio1" class="form-check-input" data-label="I will create and add content to all pages on my own" required>
                         <label for="est_pages_radio1">I will create and add content to all pages on my own</label>
                     </div>
                     <div>
-                        <input type="radio" name="est_pages" id="est_pages_radio2" class="form-check-input">
+                        <input type="radio" name="est_pages" id="est_pages_radio2" class="form-check-input" data-label="I would like the pages in my website to be professionally designed">
                         <label for="est_pages_radio2">I would like the pages in my website to be professionally designed</label>
                     </div>
                     <div>
-                        <input type="radio" name="est_pages" id="est_pages_radio3" class="form-check-input">
+                        <input type="radio" name="est_pages" id="est_pages_radio3" class="form-check-input" data-label="I would like to do a mixture of both">
                         <label for="est_pages_radio3"> I would like to do a mixture of both</label>
                     </div>
                 </div>
