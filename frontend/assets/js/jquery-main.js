@@ -9,7 +9,7 @@
 
 
     /***adding message box ***/
-    $('.form_field').append("<div class='est_message_box' id='est_message_box'></div>")
+    $('.form_field').append("<div class='est_message_box' id=''></div>")
     let message_box = $('.est_message_box');
     message_box.hide();
 
@@ -19,8 +19,8 @@
     all_forms.forEach(all_form => {
         let ids = $(all_form).attr('id');
         let required_element = $('#' + ids + ' input:required');
-        if( required_element.length > 0 ){
-            $('#'+ ids + ' .next__').attr('disabled', 'disabled')
+        if (required_element.length > 0) {
+            $('#' + ids + ' .next__').attr('disabled', 'disabled')
         }
     });
 
@@ -28,18 +28,18 @@
     console.log(all_nav_buttons);
     all_nav_buttons.forEach(all_nav_button => {
         const button_id = $(all_nav_button).attr('id');
-        // $('#'+ button_id).attr('disabled','disabled');
+        $('#' + button_id).attr('disabled', 'disabled');
     });
 
     all_forms.forEach(all_form => {
         let ids_ = $(all_form).attr('id');
         console.log(ids_)
         //next btn
-        $('#'+ ids_).on('click', '.next__', function(){
+        $('#' + ids_).on('click', '.next__', function () {
             let current_tab_pane = $(this).parentsUntil('.tab-pane').parent();
             let current_id = $(current_tab_pane).attr('id');
-            console.log($('#'+current_id+'-tab').parent().next().children().removeAttr('disabled'));
-            console.log($('#'+current_id+'-tab').parent().next().children().click());
+            console.log($('#' + current_id + '-tab').parent().next().children().removeAttr('disabled'));
+            console.log($('#' + current_id + '-tab').parent().next().children().click());
 
             // $(current_tab_pane).removeClass('show active');
             // $(current_tab_pane).next().addClass('show active');
@@ -47,11 +47,11 @@
             // $('#pages-tab').click();
         });
         //previous btn
-        $('#'+ ids_).on('click', '.previous__', function(){
+        $('#' + ids_).on('click', '.previous__', function () {
             let current_tab_pane = $(this).parentsUntil('.tab-pane').parent();
             let current_id = $(current_tab_pane).attr('id');
-            console.log($('#'+current_id+'-tab').parent().prev().children().removeAttr('disabled'));
-            console.log($('#'+current_id+'-tab').parent().prev().children().click());
+            console.log($('#' + current_id + '-tab').parent().prev().children().removeAttr('disabled'));
+            console.log($('#' + current_id + '-tab').parent().prev().children().click());
         });
     });
 
@@ -61,14 +61,16 @@
     let id_design_tab = $(design_tab).find('.section_form').attr('id');
     //for design tab
     $('#' + id_design_tab).on('change', 'input[type="radio"]', function () {
+        let message_box_ = jQuery('#' + id_design_tab + " .est_message_box")
         if ($(this).attr('data-label') === 'Custom Website with Consultative Process') {
-            message_box.show();
-            message_box.append("<div class='design_message_box_1'><p>testt</p></div>");
+            message_box_.show();
+            console.log(message_box);
+            message_box_.append("<div class='design_message_box_1'><p>testt</p></div>");
             $('.design_message_box_2').remove();
         }
         else if ($(this).attr('data-label') === 'Fast Design Website with Less Consulting & Meetings') {
-            message_box.show();
-            message_box.append("<div class='design_message_box_2'><p>testttt</p></div>");
+            message_box_.show();
+            message_box_.append("<div class='design_message_box_2'><p>testttt</p></div>");
             $('.design_message_box_1').remove();
         }
 
@@ -76,7 +78,7 @@
         console.log(get_name);
         if ($("input[name='" + get_name + "']").is(':checked')) {
             $('#' + id_design_tab + ' .next__').removeAttr('disabled');
-            
+
         }
 
     });
@@ -96,12 +98,14 @@
                         break;
                     case 'content-development_form':
                         content_dev(form_name);
+                        content_dev_required(form_name);
                         break;
                     case 'programming_form':
                         programming(form_name);
                         break;
                     case 'ecommerce_form':
                         ecommerce(form_name);
+                        ecommerce_required(form_name);
                         break;
                     case 'seo_form':
                         seo(form_name);
@@ -124,7 +128,9 @@
         $('#' + page).on('change', 'input[type=radio]', function () {
             if ($(this).attr('data-label') === 'I will create and add content to all pages on my own') {
                 $(this_message_box).show();
-                $(this_message_box).append('<div class="design_message_box_1"> heree goes something</div>');
+                if ($('#' + page + ' .design_message_box_1').length === 0) {
+                    $(this_message_box).append('<div class="design_message_box_1"> heree goes something</div>');
+                }
                 $('#' + page + ' .design_message_box_2').remove();
             }
             else if (($(this).attr('data-label') === 'I would like the pages in my website to be professionally designed') || ($(this).attr('data-label') === 'I would like to do a mixture of both')) {
@@ -135,6 +141,7 @@
                 $('#' + page + ' .design_message_box_1').remove();
                 console.log($('#' + page + ' .design_message_box_2').length);
             }
+            debugger;
         });
     }
 
@@ -177,6 +184,23 @@
             }
         });
     }
+    function content_dev_required(content) {
+        let all_required_inputs = $('#' + content + ' input:required').toArray();
+        console.log(all_required_inputs);
+        let all_required_this = [];
+        all_required_inputs.forEach(all_required_this__ => {
+            all_required_this.push($(all_required_this__).attr('name'));
+
+        });
+        console.log(all_required_this);
+        $('#' + content).on('change', 'input[type="radio"]', function () {
+            for (let index = 0; index < all_required_this.length; index++) {
+                if ($('#' + content + ' input[name="' + all_required_this[index] + '"]').is(':checked')) {
+                    $('#' + content + ' .next__').removeAttr('disabled');
+                }
+            }
+        });
+    }
 
     function programming(program) {
         console.warn('hello' + program);
@@ -184,11 +208,44 @@
 
     function ecommerce(ecom) {
         console.warn('hello' + ecom);
+        let this_message_box = '#' + ecom + ' .' + $(message_box).attr('class');
+        $('#' + ecom + ' .est_message_box:nth-of-type(2)').remove();
+        $('#' + ecom).on('change', 'input[type=radio]', function () {
+            if ($(this).attr('data-label') === 'Yes') {
+                $(this_message_box).show();
+                $(this_message_box).append('<div class="design_message_box_1"> heree goes something</div>');
+                $('#' + ecom + ' .design_message_box_2').remove();
+            }
+            else if (($(this).attr('data-label') === 'No') || ($(this).attr('data-label') === 'I would like to do a mixture of both')) {
+                $('#' + ecom + ' .design_message_box_1').remove();
+                
+            }
+        });
+    }
+
+
+    function ecommerce_required(content) {
+        let all_required_inputs = $('#' + content + ' input:required').toArray();
+        console.log(all_required_inputs);
+        let all_required_this = [];
+        all_required_inputs.forEach(all_required_this__ => {
+            all_required_this.push($(all_required_this__).attr('name'));
+
+        });
+        console.log(all_required_this);
+        $('#' + content).on('change', 'input[type="radio"]', function () {
+            for (let index = 0; index < all_required_this.length; index++) {
+                if ($('#' + content + ' input[name="' + all_required_this[index] + '"]').is(':checked')) {
+                    $('#' + content + ' .next__').removeAttr('disabled');
+                }
+            }
+        });
     }
 
     function seo(seo_) {
         console.warn('hello' + seo_);
     }
+
 
     function quote(value__) {
         console.warn('hello' + value__);

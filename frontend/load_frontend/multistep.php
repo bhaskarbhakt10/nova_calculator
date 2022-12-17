@@ -42,9 +42,7 @@
 
                                         <div class="next_prev_button">
                                             <div>
-                                                <button class="next__ btn btn-primary">
-                                                    Next
-                                                </button>
+                                                <?php include 'forms/next.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -66,14 +64,10 @@
 
                                         <div class="next_prev_button">
                                             <div>
-                                                <button class="next__ btn btn-primary">
-                                                    Next
-                                                </button>
+                                                <?php include 'forms/next.php'; ?>
                                             </div>
                                             <div>
-                                                <button class="previous__ btn btn-secondary">
-                                                    Previous
-                                                </button>
+                                                <?php include 'forms/previous.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -93,16 +87,12 @@
                                         require_once 'forms/content_dev_form.php'
                                         ?>
 
-                                        <div class="next_prev_button">
+                                        <div class="next_prev_button" type="button">
                                             <div>
-                                                <button class="next__ btn btn-primary">
-                                                    Next
-                                                </button>
+                                                <?php include 'forms/next.php'; ?>
                                             </div>
                                             <div>
-                                                <button class="previous__ btn btn-secondary">
-                                                    Previous
-                                                </button>
+                                                <?php include 'forms/previous.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -124,14 +114,10 @@
 
                                         <div class="next_prev_button">
                                             <div>
-                                                <button class="next__ btn btn-primary">
-                                                    Next
-                                                </button>
+                                                <?php include 'forms/next.php'; ?>
                                             </div>
                                             <div>
-                                                <button class="previous__ btn btn-secondary">
-                                                    Previous
-                                                </button>
+                                                <?php include 'forms/previous.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -153,14 +139,10 @@
 
                                         <div class="next_prev_button">
                                             <div>
-                                                <button class="next__ btn btn-primary">
-                                                    Next
-                                                </button>
+                                                <?php include 'forms/next.php'; ?>
                                             </div>
                                             <div>
-                                                <button class="previous__ btn btn-secondary">
-                                                    Previous
-                                                </button>
+                                                <?php include 'forms/previous.php'; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -183,44 +165,10 @@
 
                                             <div class="next_prev_button">
                                                 <div>
-                                                    <button class="next__ btn btn-primary">
-                                                        Next
-                                                    </button>
+                                                    <?php include 'forms/next.php'; ?>
                                                 </div>
                                                 <div>
-                                                    <button class="previous__ btn btn-secondary">
-                                                        Previous
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="quote" role="tabpanel" aria-labelledby="quote-tab">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="section_heading">
-                                            <h2 class="entry_heading">
-                                                7. Get an Itemized Quote
-                                            </h2>
-                                        </div>
-                                        <div class="section_form quote_form" id="quote_form">
-                                            <?php
-                                            require_once 'forms/quote_form.php'
-                                            ?>
-
-                                            <div class="next_prev_button">
-                                                <div>
-                                                    <button class="previous__ btn btn-secondary">
-                                                        Previous
-                                                    </button>
-                                                </div>
-                                                <div>
-                                                    <button class="next__ btn btn-primary">
-                                                        Submit
-                                                    </button>
+                                                    <?php include 'forms/previous.php'; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -228,13 +176,41 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="calculator_box">
-                            calculator
+                        <div class="tab-pane fade" id="quote" role="tabpanel" aria-labelledby="quote-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section_heading">
+                                        <h2 class="entry_heading">
+                                            7. Get an Itemized Quote
+                                        </h2>
+                                    </div>
+                                    <div class="section_form quote_form" id="quote_form">
+                                        <?php
+                                        require_once 'forms/quote_form.php'
+                                        ?>
+
+                                        <div class="next_prev_button">
+                                            <div>
+                                                <?php include 'forms/previous.php'; ?>
+                                            </div>
+                                            <div>
+                                                <button class="next__ btn btn-primary" type="button">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="calculator_box">
+                        calculator
+                    </div>
+                </div>
+            </div>
 
         </form>
     </div>
