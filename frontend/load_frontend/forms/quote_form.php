@@ -17,26 +17,26 @@
                     <div class="col-md-6">
                         <div>
                             <label for="est_first_name">First Name</label>
-                            <input type="text" name="est_first_name" id="est_first_name" class="form-control">
+                            <input type="text" name="est_first_name" id="est_first_name" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div>
                             <label for="est_last_name">Last Name</label>
-                            <input type="text" name="est_last_name" id="est_last_name" class="form-control">
+                            <input type="text" name="est_last_name" id="est_last_name" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div>
                             <label for="est_email">Email</label>
-                            <input type="email" name="est_email" id="est_email" class="form-control">
+                            <input type="email" name="est_email" id="est_email" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div>
                             <p>What type of organization are you? *</p>
                             <div>
-                                <input type="radio" name="est_organization" id="est_organization_radio1" class="form-check-input">
+                                <input type="radio" name="est_organization" id="est_organization_radio1" class="form-check-input" required>
                                 <label for="est_organization_radio1">Nonprofit</label>
                             </div>
                             <div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-12">
                         <div>
-                            <input type="checkbox" name="est_marketing_tips" id="est_marketing_tips" class="form-check-input">
+                            <input type="checkbox" name="est_marketing_tips" id="est_marketing_tips" class="form-check-input" checked>
                             <label for="est_marketing_tips">Subscribe for weekly marketing tips</label>
                         </div>
                     </div>

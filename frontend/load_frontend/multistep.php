@@ -1,6 +1,7 @@
+
 <section class="mt-5">
     <div class="container">
-        <form action="" method="POST">
+        <form action="<?php echo 'backend/form_actions/multistep.php'?>" method="POST">
             <ul class="nav nav-pills" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design" type="button" role="tab" aria-controls="design" aria-selected="true">1</button>
@@ -194,7 +195,7 @@
                                                 <?php include 'forms/previous.php'; ?>
                                             </div>
                                             <div>
-                                                <button class="next__ btn btn-primary" type="button">
+                                                <button class=" btn btn-primary" type="submit">
                                                     Submit
                                                 </button>
                                             </div>
@@ -206,8 +207,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="calculator_box">
-                        calculator
+                    <div class="calculator_box" id="calculator_box">
+                        <?php require_once 'forms/calculator.php'?>
                     </div>
                 </div>
             </div>

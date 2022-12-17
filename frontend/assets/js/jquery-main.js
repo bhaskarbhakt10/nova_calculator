@@ -1,15 +1,28 @@
 (function ($) {
 
     //all input elements in form
-    let let_all_inputs = $('input');
+    let let_all_inputs = $('.tab-pane input');
+    let let_all_radio = $('.tab-pane input[type=radio]');
     //parent element i.e div of input elements
     let parent_div_of_input = $(let_all_inputs).parent();
+    let parent_div_of_input_radio = $(let_all_radio).parent().parent();
     //adding class to parent div
     parent_div_of_input.addClass('form_field__');
+    let_all_inputs.addClass('calc_input');
+    parent_div_of_input_radio.addClass('radio__')
 
+
+    //calculatorbox
+    let calculator_box = $('#calculator_box input')
+    let calculator_box_id = $('#calculator_box input').toArray();
+    for (let index = 0; index < calculator_box_id.length; index++) {
+        let id__ = $(calculator_box_id[index]).attr('id');
+        $(calculator_box_id[index]).attr('data-assoc', id__);
+
+    }
 
     /***adding message box ***/
-    $('.form_field').append("<div class='est_message_box' id=''></div>")
+    $('.form_field,radio__').append("<div class='est_message_box' id=''></div>")
     let message_box = $('.est_message_box');
     message_box.hide();
 
@@ -123,20 +136,22 @@
     // function for pages tab
     function pages(page) {
         // console.warn('hello' + page);
+        let message_1 = "heree goes something";
+        let message_2 = '<input required class="form-control" type="number" value>'
         let this_message_box = '#' + page + ' .' + $(message_box).attr('class');
         $('#' + page + ' .est_message_box:nth-of-type(2)').remove();
         $('#' + page).on('change', 'input[type=radio]', function () {
             if ($(this).attr('data-label') === 'I will create and add content to all pages on my own') {
                 $(this_message_box).show();
                 if ($('#' + page + ' .design_message_box_1').length === 0) {
-                    $(this_message_box).append('<div class="design_message_box_1"> heree goes something</div>');
+                    $(this_message_box).append('<div class="design_message_box_1">'+message_1+'</div>');
                 }
                 $('#' + page + ' .design_message_box_2').remove();
             }
             else if (($(this).attr('data-label') === 'I would like the pages in my website to be professionally designed') || ($(this).attr('data-label') === 'I would like to do a mixture of both')) {
                 $(this_message_box).show();
                 if ($('#' + page + ' .design_message_box_2').length === 0) {
-                    $(this_message_box).append('<div class="design_message_box_2"><input required class="form-control" type="number" value></div>')
+                    $(this_message_box).append('<div class="design_message_box_2">'+message_2+'</div>')
                 }
                 $('#' + page + ' .design_message_box_1').remove();
                 // console.log($('#' + page + ' .design_message_box_2').length);
@@ -162,20 +177,20 @@
             }
             pages_required_number(page);
         });
-        
+
     }
-    
+
     function pages_required_number(page) {
         if ($('#' + page + ' input[type=number]').length !== 0) {
-            console.warn($('#' + page + ' input[type=number]'));
+            // console.warn($('#' + page + ' input[type=number]'));
             if ($('#' + page + ' input[type=number]').prop('required')) {
                 // $('#' + page +' input[type=number]').on('click', function(){
-                    $('#' + page + ' .next__').attr('disabled','disabled');
-                    $('#pages_form input[type=number]').on('change', function () {
-                        let value__ = $('#' + page + ' input[type=number]').val();
-                        if( value__ !==  ' '){
-                            $('#' + page + ' .next__').removeAttr('disabled'); 
-                        }
+                $('#' + page + ' .next__').attr('disabled', 'disabled');
+                $('#pages_form input[type=number]').on('change', function () {
+                    let value__ = $('#' + page + ' input[type=number]').val();
+                    if (value__ !== ' ') {
+                        $('#' + page + ' .next__').removeAttr('disabled');
+                    }
 
                 });
                 // console.log(value__);
@@ -271,5 +286,109 @@
     function quote(value__) {
         // console.warn('hello' + value__);
     }
+
+
+    // calcultor part
+    all_forms.forEach(all_form => {
+        let ids_calc = $(all_form).attr('id');
+        $('#' + ids_calc).on('change', '.calc_input', function () {
+            let type__ = $(this).attr('type');
+            let data_value;
+            let data_assoc;
+            switch (ids_calc) {
+                case 'design_form':
+                    // let type = $(this).attr('type');
+                    switch (type__) {
+                        case 'radio':
+                            data_value = $(this).attr('data-value');
+                            data_assoc = $(this).attr('data-assoc');
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'pages_form':
+                    console.log("inside page from")
+                    data_assoc = $(this).attr('data-assoc');
+                    
+                    let data_value_of_radio = 0;
+                    let data_value_of_check_boxes = 0;
+                    if (type__ === 'radio') {
+                        data_value_of_radio = parseFloat($(this).attr('data-value'));
+                        // $(this).parent().append('<input type="hidden" id="pages_radio_value" value="">');
+                        $('#pages_radio_value').val(data_value_of_radio);
+                    }
+                    else if (type__ === 'number') {
+
+                    }
+                    else if (type__ === 'checkbox') {
+                        console.log(ids_calc);
+                        let all_checkbox_pages = $('#' + ids_calc + ' input[type=checkbox]').toArray();
+                        let checked_val = [];
+                        let count = 0 ;
+                        for (let index = 0; index < all_checkbox_pages.length; index++) {
+                            count = count + 1;
+                            if ($(all_checkbox_pages[index]).is(':checked')) {
+                                let val = $(all_checkbox_pages[index]).attr('data-value');
+                                checked_val.push(parseFloat(val));
+                            }
+
+                        }
+                        console.log(count);
+                        const initvalue = 0;
+                        data_value_of_check_boxes = checked_val.reduce((a, b) => a + b, initvalue);
+                        // let last_checkbox = $('#' + ids_calc + ' input[type=checkbox]').parent().get(count - 1 );
+                        // last_checkbox.append('<input type="hidden" id="pages_checkbox_value" value="">')
+                        $('#pages_checkbox_value').val(data_value_of_check_boxes);
+                    }
+                    
+                    let radio_total = $('#pages_radio_value').val();
+                    console.log(radio_total);
+                    const check_total = $('#pages_checkbox_value').val();
+                    if(check_total !== ""){
+                        data_value = parseFloat(radio_total) + parseFloat(check_total);
+                    }
+                    else{
+                        data_value = parseFloat(radio_total) + 0;
+                    }
+                    
+
+
+                    break;
+                case 'content-development_form':
+                    break;
+                case 'programming_form':
+                    break;
+                case 'ecommerce_form':
+                    break;
+                case 'seo_form':
+                    break;
+                case 'quote_form':
+                    break;
+                default:
+                    break;
+            }
+
+            // console.log(data_assoc);
+            let data = {
+                'data_value': data_value,
+                // 'data_assoc':data_assoc
+            }
+            jQuery.ajax({
+                type: 'POST',
+                url: 'backend/form_actions/multistep_ajax.php',
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                    $('#' + data_assoc).val(response);
+
+                },
+                error: function (error) {
+                    window.alert(error);
+                }
+            });
+        });
+    });
+
 
 })(jQuery);
