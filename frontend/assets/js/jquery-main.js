@@ -25,7 +25,7 @@
     });
 
     let all_nav_buttons = $('li.nav-item > button.nav-link').toArray();
-    console.log(all_nav_buttons);
+    // console.log(all_nav_buttons);
     all_nav_buttons.forEach(all_nav_button => {
         const button_id = $(all_nav_button).attr('id');
         $('#' + button_id).attr('disabled', 'disabled');
@@ -33,13 +33,13 @@
 
     all_forms.forEach(all_form => {
         let ids_ = $(all_form).attr('id');
-        console.log(ids_)
+        // console.log(ids_)
         //next btn
         $('#' + ids_).on('click', '.next__', function () {
             let current_tab_pane = $(this).parentsUntil('.tab-pane').parent();
             let current_id = $(current_tab_pane).attr('id');
-            console.log($('#' + current_id + '-tab').parent().next().children().removeAttr('disabled'));
-            console.log($('#' + current_id + '-tab').parent().next().children().click());
+            $('#' + current_id + '-tab').parent().next().children().removeAttr('disabled');
+            $('#' + current_id + '-tab').parent().next().children().click();
 
             // $(current_tab_pane).removeClass('show active');
             // $(current_tab_pane).next().addClass('show active');
@@ -50,8 +50,8 @@
         $('#' + ids_).on('click', '.previous__', function () {
             let current_tab_pane = $(this).parentsUntil('.tab-pane').parent();
             let current_id = $(current_tab_pane).attr('id');
-            console.log($('#' + current_id + '-tab').parent().prev().children().removeAttr('disabled'));
-            console.log($('#' + current_id + '-tab').parent().prev().children().click());
+            $('#' + current_id + '-tab').parent().prev().children().removeAttr('disabled');
+            $('#' + current_id + '-tab').parent().prev().children().click();
         });
     });
 
@@ -64,7 +64,7 @@
         let message_box_ = jQuery('#' + id_design_tab + " .est_message_box")
         if ($(this).attr('data-label') === 'Custom Website with Consultative Process') {
             message_box_.show();
-            console.log(message_box);
+            // console.log(message_box);
             message_box_.append("<div class='design_message_box_1'><p>testt</p></div>");
             $('.design_message_box_2').remove();
         }
@@ -75,7 +75,7 @@
         }
 
         let get_name = $(this).attr('name');
-        console.log(get_name);
+        // console.log(get_name);
         if ($("input[name='" + get_name + "']").is(':checked')) {
             $('#' + id_design_tab + ' .next__').removeAttr('disabled');
 
@@ -122,7 +122,7 @@
     }
     // function for pages tab
     function pages(page) {
-        console.warn('hello' + page);
+        // console.warn('hello' + page);
         let this_message_box = '#' + page + ' .' + $(message_box).attr('class');
         $('#' + page + ' .est_message_box:nth-of-type(2)').remove();
         $('#' + page).on('change', 'input[type=radio]', function () {
@@ -136,36 +136,58 @@
             else if (($(this).attr('data-label') === 'I would like the pages in my website to be professionally designed') || ($(this).attr('data-label') === 'I would like to do a mixture of both')) {
                 $(this_message_box).show();
                 if ($('#' + page + ' .design_message_box_2').length === 0) {
-                    $(this_message_box).append('<div class="design_message_box_2"><input required class="form-control" type="number"></div>')
+                    $(this_message_box).append('<div class="design_message_box_2"><input required class="form-control" type="number" value></div>')
                 }
                 $('#' + page + ' .design_message_box_1').remove();
-                console.log($('#' + page + ' .design_message_box_2').length);
+                // console.log($('#' + page + ' .design_message_box_2').length);
             }
-            debugger;
+            // debugger;
         });
     }
 
     function pages_required(page) {
         let all_required_inputs = $('#' + page + ' input:required').toArray();
-        console.log(all_required_inputs);
+        // console.log(all_required_inputs);
         let all_required_this = [];
         all_required_inputs.forEach(all_required_this__ => {
             all_required_this.push($(all_required_this__).attr('name'));
 
         });
-        console.log(all_required_this);
+        // console.log(all_required_this);
         $('#' + page).on('change', 'input[type="radio"]', function () {
             for (let index = 0; index < all_required_this.length; index++) {
                 if ($('#' + page + ' input[name="' + all_required_this[index] + '"]').is(':checked')) {
                     $('#' + page + ' .next__').removeAttr('disabled');
                 }
             }
+            pages_required_number(page);
         });
+        
+    }
+    
+    function pages_required_number(page) {
+        if ($('#' + page + ' input[type=number]').length !== 0) {
+            console.warn($('#' + page + ' input[type=number]'));
+            if ($('#' + page + ' input[type=number]').prop('required')) {
+                // $('#' + page +' input[type=number]').on('click', function(){
+                    $('#' + page + ' .next__').attr('disabled','disabled');
+                    $('#pages_form input[type=number]').on('change', function () {
+                        let value__ = $('#' + page + ' input[type=number]').val();
+                        if( value__ !==  ' '){
+                            $('#' + page + ' .next__').removeAttr('disabled'); 
+                        }
 
+                });
+                // console.log(value__);
+                // $('#' + page +' input[type=number]').attr('data-value', value__);
+                // if($('#' + page +' input[type=number]').prop('data-value') !== ''){
+                // }
+            }
+        }
     }
 
     function content_dev(content) {
-        console.warn('hello' + content);
+        // console.warn('hello' + content);
         let this_message_box = '#' + content + ' .' + $(message_box).attr('class');
         $('#' + content + ' .est_message_box:nth-of-type(2)').remove();
         $('#' + content).on('change', 'input[type=radio]', function () {
@@ -180,19 +202,20 @@
                     $(this_message_box).append('<div class="design_message_box_2"><input required class="form-control" type="number"></div>')
                 }
                 $('#' + content + ' .design_message_box_1').remove();
-                console.log($('#' + content + ' .design_message_box_2').length);
+                // console.log($('#' + content + ' .design_message_box_2').length);
             }
         });
     }
+
     function content_dev_required(content) {
         let all_required_inputs = $('#' + content + ' input:required').toArray();
-        console.log(all_required_inputs);
+        // console.log(all_required_inputs);
         let all_required_this = [];
         all_required_inputs.forEach(all_required_this__ => {
             all_required_this.push($(all_required_this__).attr('name'));
 
         });
-        console.log(all_required_this);
+        // console.log(all_required_this);
         $('#' + content).on('change', 'input[type="radio"]', function () {
             for (let index = 0; index < all_required_this.length; index++) {
                 if ($('#' + content + ' input[name="' + all_required_this[index] + '"]').is(':checked')) {
@@ -203,11 +226,11 @@
     }
 
     function programming(program) {
-        console.warn('hello' + program);
+        // console.warn('hello' + program);
     }
 
     function ecommerce(ecom) {
-        console.warn('hello' + ecom);
+        // console.warn('hello' + ecom);
         let this_message_box = '#' + ecom + ' .' + $(message_box).attr('class');
         $('#' + ecom + ' .est_message_box:nth-of-type(2)').remove();
         $('#' + ecom).on('change', 'input[type=radio]', function () {
@@ -218,21 +241,20 @@
             }
             else if (($(this).attr('data-label') === 'No') || ($(this).attr('data-label') === 'I would like to do a mixture of both')) {
                 $('#' + ecom + ' .design_message_box_1').remove();
-                
+
             }
         });
     }
 
-
     function ecommerce_required(content) {
         let all_required_inputs = $('#' + content + ' input:required').toArray();
-        console.log(all_required_inputs);
+        // console.log(all_required_inputs);
         let all_required_this = [];
         all_required_inputs.forEach(all_required_this__ => {
             all_required_this.push($(all_required_this__).attr('name'));
 
         });
-        console.log(all_required_this);
+        // console.log(all_required_this);
         $('#' + content).on('change', 'input[type="radio"]', function () {
             for (let index = 0; index < all_required_this.length; index++) {
                 if ($('#' + content + ' input[name="' + all_required_this[index] + '"]').is(':checked')) {
@@ -243,12 +265,11 @@
     }
 
     function seo(seo_) {
-        console.warn('hello' + seo_);
+        // console.warn('hello' + seo_);
     }
 
-
     function quote(value__) {
-        console.warn('hello' + value__);
+        // console.warn('hello' + value__);
     }
 
 })(jQuery);
