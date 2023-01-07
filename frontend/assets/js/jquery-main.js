@@ -42,6 +42,7 @@
     all_nav_buttons.forEach(all_nav_button => {
         const button_id = $(all_nav_button).attr('id');
         $('#' + button_id).attr('disabled', 'disabled');
+        $('li.nav-item:first-child > button.nav-link').removeAttr('disabled');
     });
 
     all_forms.forEach(all_form => {
@@ -91,7 +92,6 @@
         // console.log(get_name);
         if ($("input[name='" + get_name + "']").is(':checked')) {
             $('#' + id_design_tab + ' .next__').removeAttr('disabled');
-
         }
 
     });
@@ -204,7 +204,7 @@
     function content_dev(content) {
         // console.warn('hello' + content);
         let this_message_box = '#' + content + ' .' + $(message_box).attr('class');
-        $('#' + content + ' .est_message_box:nth-of-type(2)').remove();
+        $('#' + content + ' .radio__:last-child .est_message_box').remove();
         $('#' + content).on('change', 'input[type=radio]', function () {
             if ($(this).attr('data-label') === 'I will write it.') {
                 $(this_message_box).show();
@@ -356,12 +356,36 @@
 
                     break;
                 case 'content-development_form':
+                    data_assoc = $(this).attr('data-assoc');
+                    data_value = $(this).attr('data-value');
                     break;
                 case 'programming_form':
+                    data_assoc = $(this).attr('data-assoc');
+                    data_value = $(this).attr('data-value');
+                    
+                    let checked_val = [];
+                    let program_checkbox = $('#' + ids_calc + ' input[type=checkbox]').toArray();
+                    for (let index = 0; index < program_checkbox.length; index++) {
+                        if ($(program_checkbox[index]).is(':checked')) {
+                            let val = $(program_checkbox[index]).attr('data-value');
+                            checked_val.push(parseFloat(val));
+                        }
+
+                    }
+                    data_value = checked_val.reduce((a, b) => a + b, 0);
+                    
+                   
+
+
                     break;
                 case 'ecommerce_form':
+                    data_value = $(this).attr('data-value');
+                            data_assoc = $(this).attr('data-assoc');
+
                     break;
                 case 'seo_form':
+                    data_value = $(this).attr('data-value');
+                            data_assoc = $(this).attr('data-assoc');
                     break;
                 case 'quote_form':
                     break;
@@ -389,6 +413,39 @@
             });
         });
     });
+
+
+
+
+
+
+
+    //total
+
+        let input_field = $('#calculator_box input:not(#total)').toArray();
+        console.log(input_field);
+        total_price = []
+        $('body').on('click','.next__' , function(){
+            for (let index = 0; index < input_field.length; index++) {
+                console.log(jQuery(input_field[index]));
+                let value__ = jQuery(input_field[index]).val();
+                console.log(value__);
+                if(value__ !== ""){
+                    total_price.push(parseFloat(value__));
+                }
+                else{
+                    total_price.push(0);
+                }
+            }
+            console.log(total_price);
+            if(total_price !== ""){
+                const final_price = total_price.reduce((a, b) => a + b, 0);
+                let total_field = $('#calculator_box #total') ;
+                jQuery(total_field).val(final_price);
+                total_price.length = 0;
+            }
+        });
+
 
 
 })(jQuery);

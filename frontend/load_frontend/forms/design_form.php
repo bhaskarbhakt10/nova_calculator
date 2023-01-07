@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="form_wrap">
                 <div class="form_field">
-                    <p>What type of website design process would you like? * </p>
+                    <p class="form_question__">What type of website design process would you like? * </p>
                     <div>
                         <input type="radio" name="est_design" id="est_design_radio1" class="form-check-input" data-label='Custom Website with Consultative Process' required data-value="100" data-assoc="calc_design">
                         <label for="est_design_radio1">Custom Website with Consultative Process</label>

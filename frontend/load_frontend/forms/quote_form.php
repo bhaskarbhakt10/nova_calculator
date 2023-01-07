@@ -15,21 +15,21 @@
             <div class="form_wrap">
                 <div class="row">
                     <div class="col-md-6">
-                        <div>
-                            <label for="est_first_name">First Name</label>
+                        <div class="form-outline mb-3 pb-0">
                             <input type="text" name="est_first_name" id="est_first_name" class="form-control" required>
+                            <label for="est_first_name" class="form-label">First Name</label>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div>
-                            <label for="est_last_name">Last Name</label>
+                        <div class="form-outline mb-3 pb-0">
                             <input type="text" name="est_last_name" id="est_last_name" class="form-control" required>
+                            <label for="est_last_name" class="form-label">Last Name</label>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div>
-                            <label for="est_email">Email</label>
+                        <div class="form-outline mb-3 pb-0">
                             <input type="email" name="est_email" id="est_email" class="form-control" required>
+                            <label for="est_email" class="form-label">Email</label>
                         </div>
                     </div>
                     <div class="col-md-12">

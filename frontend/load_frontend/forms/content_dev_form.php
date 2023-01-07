@@ -14,22 +14,22 @@
                 <div class="form_field">
                     <p>How will you create the text for your website? </p>
                     <div>
-                        <input type="radio" name="est_content_dev" id="est_content_dev_radio1" class="form-check-input" data-label="I will write it.">
+                        <input type="radio" name="est_content_dev" id="est_content_dev_radio1" class="form-check-input" data-label="I will write it."  data-value="00" data-assoc="calc_content">
                         <label for="est_content_dev_radio1">I will write it.</label>
                     </div>
                     <div>
-                        <input type="radio" name="est_content_dev" id="est_content_dev_radio2" class="form-check-input" data-label="I would like a professional to write the content for my website for me.">
+                        <input type="radio" name="est_content_dev" id="est_content_dev_radio2" class="form-check-input" data-label="I would like a professional to write the content for my website for me." data-value="15" data-assoc="calc_content">
                         <label for="est_content_dev_radio2"> I would like a professional to write the content for my website for me.</label>
                     </div>
                 </div>
                 <div class="form_field">
                     <p>Do you need professional photography for your website?</p>
                     <div>
-                        <input type="radio" name="est_content_photography" id="est_content_photography_radio1" class="form-check-input">
+                        <input type="radio" name="est_content_photography" id="est_content_photography_radio1" class="form-check-input" data-value="20" data-assoc="calc_content">
                         <label for="est_content_photography_radio1"> Yes </label>
                     </div>
                     <div>
-                        <input type="radio" name="est_content_photography" id="est_content_photography_radio2" class="form-check-input">
+                        <input type="radio" name="est_content_photography" id="est_content_photography_radio2" class="form-check-input" data-value="00" data-assoc="calc_content">
                         <label for="est_content_photography_radio2"> No </label>
                     </div>
                 </div>
